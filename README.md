@@ -2,6 +2,9 @@
 
 End of course project by Richard M. Palmer
 
+Submitted for the 'Getting and Cleaning Data' course
+from John Hopkins University, through coursera.org
+
 ## run_analysis.R script
 
 This script does the following:
@@ -39,7 +42,7 @@ Each row represents a different combination of activity and subject.
 The first two columns give the activity label and subject.
 The remaining columns give the mean of the measurements for that
 particular combination of activity and subject.
-The codebook is in a separate file.
+The codebook is in a separate file in this repository, called codebook.md
 
 ## The following command can be used to load the resulting data
 
