@@ -4,8 +4,10 @@
 # https://github.com/rmpalmer/DataCleaningProject.git
 
 # for joining...
-library(plyr)
 library(dplyr)
+
+# for melt, dcast
+library(reshape2)
 
 # get a list of the features, used to assign column names when reading data
 features <- read.table(file="UCI HAR Dataset/features.txt"
@@ -49,3 +51,24 @@ all_data <- rbind(training, test)
 # map the activity codes to labels
 all_data <- join(all_data,activity_map,by="activity_code")
 
+# get all column names out
+all_columns <- names(all_data)
+
+# find the indices of interest
+#  with a regular expression looking for .mean. or .std. 
+#  or one of the columns that I added in
+cols_to_keep <- grep ("(\\.mean\\.|\\.std\\.|subjects|activity_code|activity_label)",all_columns)
+
+# select the columns of interest
+selected_data <- select(all_data,cols_to_keep)
+
+# what are the measurement statistics of interest
+measurements_of_interest <- grep("(\\.mean\\.|\\.std\\.)",all_columns,value=TRUE)
+
+# make it a narrow tidy dataset
+molten <- melt(selected_data
+              ,id=c("subjects","activity_label")
+              ,measure.vars = measurements_of_interest)
+
+# reshape so that the measurements are all a function of sub
+result <- dcast(molten,activity_label + subjects ~ variable,mean)
