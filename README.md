@@ -32,13 +32,14 @@ combination of activity and subject.  Use the mean function to collect
 all measurements for each such combination.
 * write out the resulting data frame as a text file.
 
-## Reslting data
+## Resulting data
 
 The resulting data are 180 rows with 68 columns.
 Each row represents a different combination of activity and subject.
 The first two columns give the activity label and subject.
 The remaining columns give the mean of the measurements for that
 particular combination of activity and subject.
+The codebook is in a separate file.
 
 ## The following command can be used to load the resulting data
 
