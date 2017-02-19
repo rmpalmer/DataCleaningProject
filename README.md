@@ -16,7 +16,7 @@ X_train.txt
 X_test.txt
 * Read the subjects from subject_test.txt and append this to the measurements
 * Read the activity codes from y_test.txt and append this to the measurements
-* Row bind the training and test dataests together
+* Row bind the training and test datasets together
 * Get a map of integer activity codes to label strings from the file
 activity_labels.txt
 * use join to add the activity labels from the map to each row
